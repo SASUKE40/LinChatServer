@@ -1,0 +1,59 @@
+﻿<dx:DXWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="LinChatServer.MainWindow"
+        Title="LinChat服务端" Height="400" Width="700" Icon="{dx:DXImage Image=Example_32x32.png}" WindowStartupLocation="CenterScreen" DataContext="{Binding MainViewModel, Mode=OneWay, Source={StaticResource Locator}}">
+    <Grid>
+        <dx:DXTabControl>
+            <dx:DXTabItem Header="服务器状态">
+                <Grid Background="Transparent">
+                    <dxlc:LayoutControl Header="Header" Orientation="Vertical" UseLayoutRounding="True">
+                        <dxlc:LayoutGroup Header="监听详情" View="GroupBox" Orientation="Vertical">
+                            <dxlc:LayoutItem Label="监听地址：">
+                                <dxe:TextEdit EditValue="{Binding Address,Mode=TwoWay}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="监听端口：">
+                                <dxe:TextEdit EditValue="{Binding Port,Mode=TwoWay}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="操作：">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="2" Content="开始监听" Command="{Binding ListenCommand, Mode=OneWay}"></Button>
+                                    <Button Grid.Column="3" Content="停止监听" Command="{Binding StopCommand, Mode=OneWay}"></Button>
+                                </Grid>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup Header="测试连接" View="GroupBox" Orientation="Vertical">
+                            <dxlc:LayoutItem Label="发送数据：">
+                                <dxe:TextEdit Text="Hello Server"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="接收数据：">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="操作：">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="2" Content="连接"></Button>
+                                    <Button Grid.Column="3" Content="发送"></Button>
+                                </Grid>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutControl>
+                    
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+    </Grid>
+</dx:DXWindow>
